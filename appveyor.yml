@@ -3,7 +3,7 @@ image: Visual Studio 2017
 configuration: Release
 environment:
   CODECOV_TOKEN:
-    secure: qLTLWGSiBSBNf9rKPeQUX1me41EhF4tJ3HLaxaMWo9tjaHlO829TeuLLtlr5dRad
+    secure: BeSnNg2sOOFt4TPacG5njonboV4XDsYc4Hlohk0EL2eYVInCR4J835Tc6jyEMjlT
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
