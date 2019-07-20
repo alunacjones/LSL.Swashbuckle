@@ -4,7 +4,7 @@ using Swashbuckle.Application;
 namespace LSL.Swashbuckle
 {
     /// <summary>
-    /// 
+    /// Extensions for Swashbuckle
     /// </summary>
     public static class SwashbuckleExtensions
     {
