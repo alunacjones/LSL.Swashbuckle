@@ -4,7 +4,7 @@ using Swashbuckle.Application;
 namespace LSL.Swashbuckle
 {
     /// <summary>
-    /// Extensions for Swashbuckle
+    /// Extensions
     /// </summary>
     public static class SwashbuckleExtensions
     {
@@ -15,10 +15,11 @@ namespace LSL.Swashbuckle
         /// <returns>The source</returns>
         public static InfoBuilder AddAssemblyVersionDescription(this InfoBuilder source)
         {
-            var version = new StackTrace()
-                .GetFrames()[1]
+            var stackTrace = new StackTrace();
+            var version = stackTrace
+                .GetFrame(1)
                 .GetMethod()
-                .GetType()
+                .DeclaringType
                 .Assembly
                 .GetName()
                 .Version;
