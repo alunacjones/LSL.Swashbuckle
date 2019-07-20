@@ -11,7 +11,9 @@ namespace LSL.Swashbuckle.Tests
         public void ItShouldSetupTheAssemblyVersionDescription()
         {
             var ib = new InfoBuilder("1", "title").AddAssemblyVersionDescription();
-            ib.GetType().GetField("_description", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(ib).Should().Be("AssemblyVersion: 1.0.0.0");            
+            var expectedVersion = GetType().Assembly.GetName().Version;
+            
+            ib.GetType().GetField("_description", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(ib).Should().Be($"AssemblyVersion: {expectedVersion}");            
         }
     }
 }
