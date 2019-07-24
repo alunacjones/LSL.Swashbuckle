@@ -54,7 +54,8 @@ namespace LSL.Swashbuckle
             const string routeTemplate = "lsl-swaggerui-custom-data";
 
             httpConfiguration.Routes.MapHttpRoute(routeTemplate, routeTemplate, null, null, new CustomDataHandler(configuration));
-            
+            source.InjectJavaScript(typeof(SwashbuckleExtensions).Assembly, "lsl-swaggerui-custom-data.js");
+
             return source;
         }
 

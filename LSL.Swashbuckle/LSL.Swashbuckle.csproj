@@ -11,10 +11,14 @@
     <Authors>alunacjones</Authors>
   </PropertyGroup>
 
-<ItemGroup>
-    <PackageReference Include="Swashbuckle.Core" Version="5.6.*" />
-</ItemGroup>
-
+  <ItemGroup>
+      <PackageReference Include="Swashbuckle.Core" Version="5.6.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources/lsl-swaggerui-custom-data.js">
+      <LogicalName>lsl-swaggerui-custom-data.js</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
       <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
