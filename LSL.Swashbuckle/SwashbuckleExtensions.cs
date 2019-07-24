@@ -1,6 +1,9 @@
+using System;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Web.Http;
+using LSL.Swashbuckle.CustomData;
 using Swashbuckle.Application;
 
 namespace LSL.Swashbuckle
@@ -34,6 +37,24 @@ namespace LSL.Swashbuckle
         public static SwaggerUiConfig DocumentTitleFromCurrentAssembly(this SwaggerUiConfig source) 
         {
             source.DocumentTitle($"Swagger UI - {GetCallingAssembly().GetName().Name}");
+            return source;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="httpConfiguration"></param>
+        /// <param name="configurator"></param>
+        /// <returns></returns>
+        public static SwaggerUiConfig EnableCustomData(this SwaggerUiConfig source, HttpConfiguration httpConfiguration, Action<CustomDataBuilder> configurator) 
+        {
+            var configuration = new CustomDataBuilder();
+            configurator?.Invoke(configuration);
+            const string routeTemplate = "lsl-swaggerui-custom-data";
+
+            httpConfiguration.Routes.MapHttpRoute(routeTemplate, routeTemplate, null, null, new CustomDataHandler(configuration));
+            
             return source;
         }
 
